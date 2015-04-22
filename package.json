@@ -1,0 +1,23 @@
+{
+  "name": "reveal.js-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://jeroenverfallie@github.com/jeroenverfallie/reveal.js-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeroenverfallie/reveal.js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jeroenverfallie/reveal.js-boilerplate",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-connect-multi": "^1.0.8"
+  }
+}

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title></title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/highlightjs/obsidian.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <style>
+    .reveal pre code {
+      display: block;
+      padding: 5px;
+      overflow: auto;
+      max-height: 600px;
+      word-wrap: normal;
+    }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+
+
+
+
+
+
+
+
+
+
+<!--- 
+*******************************
+
+    INTRO 
+
+*******************************
+-->
+
+
+
+<section>
+<h2>Angular Dashboard</h2>
+<p>Scraping &amp; Workflow</p>
+</section>
+<!--        -->
+
+
+
+
+<section>
+<h2>Casestory</h2>
+
+<p>A trending news dashboard<br /><br /></p>
+
+<ul>
+    <li>Hard to keep up</li>
+    <li>Best timespan to post</li>
+    <li>What news is being shared</li>
+</ul>
+</section>
+
+
+<section>
+    <img src="img/casestory.png" height="515" width="934" alt="">
+</section>
+<section>
+    <img src="img/casestory-graph.png" height="228" width="803"alt="">
+</section>
+<section>
+    <img src="img/casestory-graph2.png" height="552" width="970" alt="">
+</section>
+<!--        -->
+
+
+
+
+
+<!--- 
+*******************************
+
+    SCRAPING 
+
+*******************************
+-->
+
+
+<section>
+<h2>First challenge</h2>
+
+<p> How do we get the data?</p>
+</section>
+
+
+<!--        -->
+
+
+
+<section>
+<section>
+    <h2>Scraping: Kimonolabs</h2>
+
+    <p>Turn any webpage into an API</p>
+</section>
+<section>
+    <img src="img/kimono.png" height="397" width="746">
+</section>
+<section>
+
+<pre><code class="javascript">{
+    "sessions": [{
+            "title": "Flux & React",
+            "description": "Facebook switched to Flux+..."
+        }, {
+            "title": "Tessel.io - IoT ",
+            "description": "Program a microcontroller with..."
+        },
+        ...
+    ]
+}
+</code></pre>
+</section>
+</section>
+
+
+<!--        -->
+
+
+
+
+
+<section>
+<section>
+<h2>Scraping: Xray</h2>
+
+<p><small>Host your own scraper</small></p>
+<a href="https://github.com/lapwinglabs/x-ray">https://github.com/lapwinglabs/x-ray</a>
+
+<pre><code class="javascript">var xray = require('x-ray');
+
+xray('http://jsconf.be/en/')
+  .select([{
+    $root: '.schedule article',
+    title: 'h3',
+    description: 'p'
+  }])
+  .write('sessions.json');
+</code></pre>
+</section>
+<section>
+<pre><code class="javascript">[
+  {
+    "title": "Flux & React",
+    "description": "Facebook switched to Flux+React. Why, ..."
+  },
+  {
+    "title": "Tessel.io - IoT ",
+    "description": "Program a microcontroller with..."
+  },
+  ...
+]
+</code></pre>
+</section>
+</section>
+
+
+<!--        -->
+
+
+
+<section>
+<h2>Scraping: RSS feeds</h2>
+<section>
+<pre><code class="xml">
+&lt;channel&gt;
+    &lt;title&gt;News | The Times&lt;/title&gt;
+    ...
+    &lt;item&gt;
+        &lt;title&gt;Now lawyers hit the ...&lt;/title&gt;
+        &lt;link&gt;&lt;![CDATA[http://www.thetimes.co.uk/...]]&gt;&lt;/link&gt;
+        &lt;guid&gt;&lt;![CDATA[http://www.thetimes.co.uk/...]]&gt;&lt;/guid&gt;
+        &lt;pubDate&gt;...&lt;/pubDate&gt;
+        &lt;atom:updated&gt;...&lt;/atom:updated&gt;
+        &lt;description&gt;...&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;title&gt;Why the DPP was right ...&lt;/title&gt;
+        &lt;link&gt;&lt;![CDATA[http://www.thetimes.co.uk/...]]&gt;&lt;/link&gt;
+        &lt;guid&gt;&lt;![CDATA[http://www.thetimes.co.uk/...]]&gt;&lt;/guid&gt;
+        &lt;pubDate&gt;..&lt;/pubDate&gt;
+        &lt;atom:updated&gt;...&lt;/atom:updated&gt;
+        &lt;description&gt;...&lt;/description&gt;
+    &lt;/item&gt;
+    ..
+</code></pre>
+</section>
+<section>
+<h3>Yahoo pipes</h3>
+<ul>
+    <li>Combine feeds</li>
+    <li>Do calculations</li>
+    <li>Let yahoo handle requesting feeds</li>
+    <li>JSON endpoint</li>
+</ul>
+</section>
+</section>
+
+
+<!--        -->
+
+<section>
+<h2>Scraping: Shares</h2>
+<section>
+<p>Fetch social media API based on article URLs</p>
+</section>
+<section>
+<pre><code class="json">
+[
+  {
+    "url": "http:\/\/www.hln.be\/...",
+    "normalized_url": "http:\/\/www.hln.be\/...",
+    "share_count": 1113,
+    "like_count": 4588,
+    "comment_count": 5159,
+    "total_count": 10860
+  }
+]
+</code></pre>
+</section>
+</section>
+
+
+<!--        -->
+
+<section>
+<h2>Scraping: Storage</h2>
+
+<p>Scraping &amp; writing: Heroku</p>
+<p>Datastorage: MongoDB</p>
+</section>
+
+
+<!--        -->
+
+
+<section>
+<h2>Scraping</h2>
+
+<ul>
+    <li>
+        <ul>
+            <li>Scrape frontpage with kimono</li>
+            <li>Scrape RSS feeds for all new articles</li>
+            <li>Store URLs + meta data</li>
+        </ul>
+    </li>
+    <li>
+        <ul>
+            <li>Fetch social media API's based on URLs</li>
+            <li>Store social media data</li>
+        </ul>
+    </li>
+</ul>
+</section>
+
+
+<section>
+<h2>Expose data</h2>
+<p>Heroku webapp API</p>
+</section>
+
+<section>
+<h2>We have data!</h2>
+<p>What about the application?</p>
+</section>
+
+
+<!--        -->
+
+<section>
+<h2>Workflow - Project setup</h2>
+<p>Components, flux(?), ES6 &amp; hot reload</p>
+</section>
+
+
+
+<section>
+<h2>Webpack</h2>
+<pre class="fragment"><code class="javascript">
+...
+entry: {
+    'front': './src/front/_entry.js',
+    'vendor': './src/vendor/_entry.js',
+},
+loaders: [{
+    test: /\.js$/,
+    exclude: /node_modules|bower_components/,
+    loader: 'babel-loader?experimental&optional=runtime'
+}, ...],
+...
+</code></pre>
+</section>
+
+<section>
+<h2>Components</h2>
+<p>Angular directives</p>
+</section>
+
+<section>
+<pre><code class="javascript">
+import '../article-item/article-item.js';
+// import './article-list.scss';
+
+angular.module('app.components')
+.directive('articleList', function() {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controllerAs: 'state',
+        controller: function() {
+            this.articles = [];
+        },
+        template: `
+        &lt;ul class="article-list"&gt;
+            &lt;article-item 
+                ng-repeat="article in state.articles" 
+                article="article"&gt;
+            &lt;/article-item&gt;
+        &lt;/ul&gt;`
+    };
+});
+
+//<article-list></article-list>
+</code></pre>
+</section>
+
+<section>
+<pre><code class="javascript">// Used in: article-list
+
+import '../date-time-ago/date-time-ago.js';
+
+angular.module('app.components')
+.directive('articleItem', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            article: '='
+        },
+        bindToController: true,
+        controllerAs: 'state',
+        controller: function() {},
+        template: `
+            ...
+            {{::state.article.title}}
+
+            <date-time-ago 
+                date="state.article.published">
+            </date-time-ago>
+            ...
+        `
+    };
+});
+</code></pre>
+</section>
+
+<section>
+<h2>Components</h2>
+<ul>
+    <li>+ Maintainable</li>
+    <li>+ Designers feel confident</li>
+    <li>+ Code and template glued</li>
+    <li>- What is a component?</li>
+    <li>- Finding names :)</li>
+</ul>
+</section>
+
+
+
+<section>
+<h2>Stores/Actions</h2>
+</section>
+
+<section>
+<section>
+Store
+<pre><code class="javascript">class NewsArticleStore {
+    constructor() {
+        this.tree = new Baobab({ articles: [], ...}, {clone: true});
+
+        this.articles = this.tree.select('articles');
+    }    
+
+    _gc(scope, cb) {
+        scope &amp;&amp; scope.$on && scope.$on('$destroy', cb);
+    }
+
+    getArticles() {
+        return this.articles.get();
+    }
+
+    onArticlesUpdated(cb, scope) {
+        this.articles.on('update', cb);
+
+        this._gc(scope, () => this.articles.off('update', cb);
+    }
+}
+
+export default new NewsArticleStore();
+</code></pre>
+</section>
+<section>
+Actions
+<pre><code class="javascript">import Store from './store.js';
+
+class NewsArticleActions {
+
+    setViewed(id, v) {
+        Store.articles.select({id}).set('viewed', v);
+    }
+
+}
+
+export default new NewsArticleActions();
+</code></pre>
+</section>
+</section>
+
+<section>
+<pre><code class="javascript">import '../article-item/article-item.js';
+import Store from '../../data-flow/store.js';
+...
+return {
+    restrict: 'E',
+    bindToController: true,
+    controllerAs: 'state',
+    controller: function($scope) {
+
+        this.articles = Store.getArticles();
+
+        Store.onArticlesChanged(() => {
+            this.articles = Store.getArticles(); 
+            $scope.$apply();
+        }, $scope);
+
+    },
+    template: `
+        &lt;article-item 
+            ng-repeat="article in state.articles" 
+            article="article"&gt;
+        &lt;/article-item&gt;`
+};
+</code></pre>
+</section>
+
+
+<section>
+<h2>Hot reload</h2>
+</section>
+
+
+<section>
+<h2>Demo</h2>
+</section>
+
+
+<section>
+<h3>Slides &amp; demo app:</h3>
+<a href="https://github.com/bitsoflove/jsconfbe-2015">https://github.com/bitsoflove/jsconfbe-2015</a>
+<br/><br/>
+<h3>Contact:</h3>
+<p>@jeroenverfallie - jerev@irc.freenode</p>
+<p>@vicrau</p>
+</section>
+
+
+
+    </div>
+</div>
+
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.pack.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
