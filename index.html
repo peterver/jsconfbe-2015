@@ -95,6 +95,9 @@
     <img src="img/casestory.png" height="515" width="934" alt="">
 </section>
 <section>
+    <img src="img/fullshot.png" height="1006" width="1083"alt="">
+</section>
+<section>
     <img src="img/casestory-graph.png" height="228" width="803"alt="">
 </section>
 <section>
@@ -136,7 +139,7 @@
     <img src="img/kimono.png" height="397" width="746">
 </section>
 <section>
-
+<p>https://www.kimonolabs.com/api/___?apikey=___</p>
 <pre><code class="javascript">{
     "sessions": [{
             "title": "Flux & React",
@@ -226,11 +229,12 @@ xray('http://jsconf.be/en/')
 </section>
 <section>
 <h3>Yahoo pipes</h3>
+
 <ul>
     <li>Combine feeds</li>
     <li>Do calculations</li>
     <li>Let yahoo handle requesting feeds</li>
-    <li>JSON endpoint</li>
+    <li>JSON endpoint<br/><small>http://pipes.yahoo.com/pipes/pipe.run?_id=___&_render=json</small></li>
 </ul>
 </section>
 </section>
@@ -244,6 +248,7 @@ xray('http://jsconf.be/en/')
 <p>Fetch social media API based on article URLs</p>
 </section>
 <section>
+<p>Facebook/... api</p>
 <pre><code class="json">
 [
   {
@@ -279,15 +284,16 @@ xray('http://jsconf.be/en/')
 <ul>
     <li>Cycle one : Articles
         <ul>
-            <li>Scrape frontpage with kimono</li>
+            <li>Scrape newssites frontpage with kimono</li>
             <li>Scrape RSS feeds for all new articles</li>
-            <li>Store URLs + meta data</li>
+            <li>Store article URLs + meta data</li>
         </ul>
     </li>
     <li>Cycle two : Shares
         <ul>
             <li>Fetch social media API's based on URLs</li>
-            <li>Store social media data</li>
+            <li>Calculate stats per during last tick</li>
+            <li>Store social media stats</li>
         </ul>
     </li>
 </ul>
@@ -296,7 +302,7 @@ xray('http://jsconf.be/en/')
 
 <section>
 <h2>Expose data</h2>
-<p>Heroku webapp API</p>
+<p>Express webapp on Heroku</p>
 </section>
 
 <section>
@@ -502,7 +508,6 @@ return {
 <p>@vicrau</p>
 </section>
 
-<div style="position: fixed; bottom: -10px; right: -90px;"><img src="img/logo.jpg" height="103" width="103"></div>
 
     </div>
 </div>

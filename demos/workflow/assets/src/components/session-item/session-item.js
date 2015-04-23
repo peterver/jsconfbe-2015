@@ -22,7 +22,7 @@ angular.module('app.components')
             <a class="list-group-item" 
                  ng-class="{'active': state.session.attending}" 
                  ng-click="state.onClick()">
-                    <h3>{{::state.session.title}}</h3>
+                    {{::state.session.title}}
             </a>
         `
     };

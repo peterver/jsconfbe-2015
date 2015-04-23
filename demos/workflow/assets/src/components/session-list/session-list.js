@@ -12,7 +12,9 @@ angular.module('app.components')
         },
         bindToController: true,
         controllerAs: 'state',
-        controller: function() { },
+        controller: function() {
+            
+        },
         template: `
             <div class="list-group">
 
