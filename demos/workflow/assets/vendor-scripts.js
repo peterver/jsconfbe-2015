@@ -1,5 +1,8 @@
-const bowerDir = __dirname + '/../public/bower_components';
+/*
+    This file will become deprecated when vendors use UMD properly.
+ */
 
+const bowerDir = __dirname + '/../public/bower_components';
 
 module.exports = {
     getScripts: function() {

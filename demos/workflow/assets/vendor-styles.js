@@ -1,5 +1,5 @@
 /*
-    This file will become deprecated when libsass supports plain css imports
+    This file will become deprecated when libsass supports plain css imports.
  */
 
 

@@ -3,7 +3,6 @@
 class DataStore {
 
     constructor() {
-        
         this.tree = new Baobab({
             sessions: []
         }, {

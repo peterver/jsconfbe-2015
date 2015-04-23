@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // Used in session-list
 
 import '../../data-flow/api-service.js';
 
@@ -15,7 +15,6 @@ angular.module('app.components')
         replace: true,
         controller: function(ApiService) {
             this.onClick = () => {
-                
                 ApiService.setSessionAsAttending(this.session.id);
             };
         },
@@ -23,7 +22,7 @@ angular.module('app.components')
             <a class="list-group-item" 
                  ng-class="{'active': state.session.attending}" 
                  ng-click="state.onClick()">
-                    {{::state.session.title}}
+                    <h3>{{::state.session.title}}</h3>
             </a>
         `
     };

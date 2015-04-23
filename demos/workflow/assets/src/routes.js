@@ -1,6 +1,5 @@
 'use strict';
 
-
 import './pages/index/index.js';
 import './data-flow/api-service.js';
 

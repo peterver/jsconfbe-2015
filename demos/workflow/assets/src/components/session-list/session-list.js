@@ -1,4 +1,4 @@
-'use strict';
+'use strict';  // Used in: page-index
 
 import '../session-item/session-item.js';
 

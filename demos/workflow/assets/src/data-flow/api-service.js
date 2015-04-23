@@ -3,9 +3,7 @@
 import DataActions from './actions.js';
 import DataStore from './store.js';
 
-
 angular.module('app.services')
-
 .factory('ApiService', function($http, $q) {
 
     const loadSessions = function() {
@@ -18,8 +16,6 @@ angular.module('app.services')
         get.then((response) => {
             DataActions.setSessions(response.data);
         });
-
-        console.log("loading");
 
         return get;
     };

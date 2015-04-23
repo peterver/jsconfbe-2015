@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
+var path = require('path'),
+    webpack = require('webpack');
 
 
-const config = require('./webpack.dev.conf.js');
+var config = require('./webpack.dev.conf.js');
 
 config.plugins.push(
     new webpack.optimize.UglifyJsPlugin(),
