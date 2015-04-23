@@ -1,3 +1,5 @@
+// Define our modules
+
 angular.module('app.components', []);
 angular.module('app.pages', []);
 angular.module('app.services', []);

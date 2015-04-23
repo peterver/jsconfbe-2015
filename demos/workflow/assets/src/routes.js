@@ -1,3 +1,4 @@
+// Define our routes
 'use strict';
 
 import './pages/index/index.js';

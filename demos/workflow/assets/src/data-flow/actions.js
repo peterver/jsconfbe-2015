@@ -1,3 +1,4 @@
+// Our actions which manipulate our store
 'use strict';
 
 import DataStore from './store.js';
@@ -16,5 +17,5 @@ class DataActions {
 
 }
 
-
+// export a singleton
 export default new DataActions();

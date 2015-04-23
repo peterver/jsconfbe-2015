@@ -1,3 +1,4 @@
+// The index page, used in routes
 'use strict';
 
 import '../../components/session-list/session-list.js';
