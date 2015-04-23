@@ -8,7 +8,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #f0f0f0;
+  background: #f0f0f0!important;
   -webkit-text-size-adjust: none;
 }
 
@@ -16,7 +16,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .hljs-subst,
 .hljs-tag .hljs-title,
 .nginx .hljs-title {
-  color: black;
+  color: black!important;
 }
 
 .hljs-string,
